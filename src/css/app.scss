@@ -1,0 +1,66 @@
+/*
+** Início função geradora de classes fs-{size}
+*/
+@function generate-font-size-classes($start, $end) {
+  $classes: ();
+
+  @for $i from $start to $end {
+    $classes: append($classes, 'fs-#{$i}', comma);
+  }
+
+  @return $classes;
+}
+
+@each $class in generate-font-size-classes(1, 51) {
+  .#{$class} {
+    font-size: #{str-slice($class, 4)}px !important;
+  }
+}
+
+/*
+** Fim função geradora de fs-{size}
+*/
+
+/*
+** Início da função geradora de classes q-gap-{none,xs,sm,md,lg,xl},
+** q-gap-x-{none,xs,sm,md,lg,xl} e q-gap-y-{none,xs,sm,md,lg,xl}
+*/
+$sizes: (
+  none: 0,
+  xs: 4,
+  sm: 8,
+  md: 16,
+  lg: 24,
+  xl: 48,
+);
+
+@each $key, $value in $sizes {
+  .q-gap-#{$key} {
+    gap: #{$value}px;
+  }
+
+  .q-gap-x-#{$key} {
+    column-gap: #{$value}px;
+  }
+
+  .q-gap-y-#{$key} {
+    row-gap: #{$value}px;
+  }
+}
+
+/*
+** Fim da função geradora de classes q-gap-{none,xs,sm,md,lg,xl},
+** q-gap-x-{xs,sm,md,lg,xl} e q-gap-y-{xs,sm,md,lg,xl}
+*/
+
+.x-container {
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.x-container-secondary {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
